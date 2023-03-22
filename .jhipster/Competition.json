@@ -1,0 +1,34 @@
+{
+  "applications": ["arena"],
+  "changelogDate": "20230322202741",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "competition",
+  "fields": [
+    {
+      "fieldName": "label",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "description",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "order",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Competition",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "competition",
+      "relationshipName": "parent",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

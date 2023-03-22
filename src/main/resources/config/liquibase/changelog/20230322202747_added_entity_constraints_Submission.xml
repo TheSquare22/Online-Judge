@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-latest.xsd">
+    <!--
+        Added the constraints for entity Submission.
+    -->
+    <changeSet id="20230322202747-2" author="jhipster">
+
+        <addForeignKeyConstraint baseColumnNames="tags_id"
+                                 baseTableName="submission"
+                                 constraintName="fk_submission__tags_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="tag_collection"/>
+
+        <addForeignKeyConstraint baseColumnNames="user_id"
+                                 baseTableName="submission"
+                                 constraintName="fk_submission__user_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="jhi_user"/>
+
+        <addForeignKeyConstraint baseColumnNames="competition_problem_id"
+                                 baseTableName="submission"
+                                 constraintName="fk_submission__competition_problem_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="competition_problem"/>
+    </changeSet>
+</databaseChangeLog>
