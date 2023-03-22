@@ -1,0 +1,26 @@
+{
+  "applications": ["arena"],
+  "changelogDate": "20230322202541",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tag_collection_tag",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TagCollectionTag",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tagCollection",
+      "relationshipName": "collection",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "tag",
+      "relationshipName": "tag",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
