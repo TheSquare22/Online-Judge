@@ -1,4 +1,4 @@
-# Judge
+# arena
 
 This application was generated using JHipster 7.9.3, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v7.9.3](https://www.jhipster.tech/documentation-archive/v7.9.3).
 
@@ -121,7 +121,7 @@ docker-compose -f src/main/docker/jhipster-control-center.yml up
 
 ### Packaging as jar
 
-To build the final jar and optimize the Judge application for production, run:
+To build the final jar and optimize the arena application for production, run:
 
 ```
 ./mvnw -Pprod clean verify
@@ -162,12 +162,6 @@ Unit tests are run by [Jest][]. They're located in [src/test/javascript/](src/te
 npm test
 ```
 
-### Other tests
-
-Performance tests are run by [Gatling][] and written in Scala. They're located in [src/test/gatling](src/test/gatling).
-
-To use those tests, you must install Gatling from [https://gatling.io/](https://gatling.io/).
-
 For more information, refer to the [Running tests page][].
 
 ### Code quality
@@ -200,16 +194,16 @@ For more information, refer to the [Code quality page][].
 
 You can use Docker to improve your JHipster development experience. A number of docker-compose configuration are available in the [src/main/docker](src/main/docker) folder to launch required third party services.
 
-For example, to start a postgresql database in a docker container, run:
+For example, to start a mysql database in a docker container, run:
 
 ```
-docker-compose -f src/main/docker/postgresql.yml up -d
+docker-compose -f src/main/docker/mysql.yml up -d
 ```
 
 To stop it and remove the container, run:
 
 ```
-docker-compose -f src/main/docker/postgresql.yml down
+docker-compose -f src/main/docker/mysql.yml down
 ```
 
 You can also fully dockerize your application and all the services that it depends on.
@@ -242,7 +236,6 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [jhipster homepage and latest documentation]: https://www.jhipster.tech
 [jhipster 7.9.3 archive]: https://www.jhipster.tech/documentation-archive/v7.9.3
 [using jhipster in development]: https://www.jhipster.tech/documentation-archive/v7.9.3/development/
-[service discovery and configuration with the jhipster-registry]: https://www.jhipster.tech/documentation-archive/v7.9.3/microservices-architecture/#jhipster-registry
 [using docker and docker-compose]: https://www.jhipster.tech/documentation-archive/v7.9.3/docker-compose
 [using jhipster in production]: https://www.jhipster.tech/documentation-archive/v7.9.3/production/
 [running tests page]: https://www.jhipster.tech/documentation-archive/v7.9.3/running-tests/
@@ -256,4 +249,3 @@ To configure CI for your project, run the ci-cd sub-generator (`jhipster ci-cd`)
 [leaflet]: https://leafletjs.com/
 [definitelytyped]: https://definitelytyped.org/
 [angular cli]: https://cli.angular.io/
-[gatling]: https://gatling.io/

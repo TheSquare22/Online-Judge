@@ -1,0 +1,34 @@
+{
+  "applications": ["arena"],
+  "changelogDate": "20230322202635",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "problem",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "directory",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "version",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Problem",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tagCollection",
+      "relationshipName": "tags",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
