@@ -1,0 +1,64 @@
+{
+  "applications": ["arena"],
+  "changelogDate": "20230322202953",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "submission",
+  "fields": [
+    {
+      "fieldName": "file",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "verdict",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "details",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "points",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "timeInMillis",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "memoryInBytes",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "uploadDate",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldName": "securityKey",
+      "fieldType": "String"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Submission",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "tagCollection",
+      "relationshipName": "tags",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "user",
+      "relationshipName": "user",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "competitionProblem",
+      "relationshipName": "competitionProblem",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}

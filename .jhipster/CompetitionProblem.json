@@ -1,0 +1,31 @@
+{
+  "applications": ["arena"],
+  "changelogDate": "20230322202952",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "competition_problem",
+  "fields": [
+    {
+      "fieldName": "order",
+      "fieldType": "Integer"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "CompetitionProblem",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "problem",
+      "relationshipName": "problem",
+      "relationshipType": "many-to-one"
+    },
+    {
+      "otherEntityName": "competition",
+      "relationshipName": "competition",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceImpl"
+}
