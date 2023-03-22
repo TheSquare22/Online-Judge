@@ -1,0 +1,93 @@
+application {
+  config {
+    baseName arena
+    packageName	com.olimpiici.arena
+    applicationType monolith
+    devDatabaseType mysql
+    prodDatabaseType mysql
+  }
+  
+  entities *
+}
+
+entity Competition {
+    label String
+    description String
+    order Integer
+}
+
+relationship ManyToOne {
+	Competition{parent} to Competition
+}
+
+entity TagCollection {	
+}
+
+entity Tag {
+	title String
+	keywords String
+	visible Boolean
+}
+
+entity TagCollectionTag {
+}
+
+relationship ManyToOne {
+	TagCollectionTag{collection} to TagCollection
+}
+
+relationship ManyToOne {
+	TagCollectionTag{tag} to Tag
+}
+
+entity Problem {
+    title String
+    directory String
+    version Integer
+}
+relationship ManyToOne {
+	Problem{tags} to TagCollection
+}
+
+entity CompetitionProblem {
+	order Integer
+}
+
+relationship ManyToOne {
+	CompetitionProblem{problem} to Problem
+}
+
+relationship ManyToOne {
+	CompetitionProblem{competition} to Competition
+}
+
+entity Submission {
+	file String
+	verdict String
+	details String
+	points Integer
+	timeInMillis Integer
+	memoryInBytes Integer
+    uploadDate ZonedDateTime
+    securityKey String
+}
+relationship ManyToOne {
+	Submission{tags} to TagCollection
+}
+
+
+
+relationship ManyToOne {
+	Submission{user} to User
+	Submission{competitionProblem} to CompetitionProblem
+}
+
+// Set pagination options
+// paginate CompetitionType, Competition with infinite-scroll
+paginate Competition, CompetitionProblem, Problem, Submission with pagination
+
+
+dto * with mapstruct
+
+service all with serviceImpl
+
