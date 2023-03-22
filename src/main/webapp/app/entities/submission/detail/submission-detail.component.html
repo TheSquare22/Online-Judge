@@ -1,0 +1,76 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="submission">
+      <h2 data-cy="submissionDetailsHeading"><span jhiTranslate="arenaApp.submission.detail.title">Submission</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ submission.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.file">File</span></dt>
+        <dd>
+          <span>{{ submission.file }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.verdict">Verdict</span></dt>
+        <dd>
+          <span>{{ submission.verdict }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.details">Details</span></dt>
+        <dd>
+          <span>{{ submission.details }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.points">Points</span></dt>
+        <dd>
+          <span>{{ submission.points }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.timeInMillis">Time In Millis</span></dt>
+        <dd>
+          <span>{{ submission.timeInMillis }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.memoryInBytes">Memory In Bytes</span></dt>
+        <dd>
+          <span>{{ submission.memoryInBytes }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.uploadDate">Upload Date</span></dt>
+        <dd>
+          <span>{{ submission.uploadDate | formatMediumDatetime }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.securityKey">Security Key</span></dt>
+        <dd>
+          <span>{{ submission.securityKey }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.tags">Tags</span></dt>
+        <dd>
+          <div *ngIf="submission.tags">
+            <a [routerLink]="['/tag-collection', submission.tags.id, 'view']">{{ submission.tags.id }}</a>
+          </div>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.user">User</span></dt>
+        <dd>
+          <span>{{ submission.user?.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.submission.competitionProblem">Competition Problem</span></dt>
+        <dd>
+          <div *ngIf="submission.competitionProblem">
+            <a [routerLink]="['/competition-problem', submission.competitionProblem.id, 'view']">{{ submission.competitionProblem.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/submission', submission.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>
