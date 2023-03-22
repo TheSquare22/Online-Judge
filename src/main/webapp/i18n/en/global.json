@@ -1,12 +1,19 @@
 {
   "global": {
-    "title": "Judge",
+    "title": "Arena",
     "browsehappy": "You are using an <strong>outdated</strong> browser. Please <a href=\"http://browsehappy.com/?locale=en\">upgrade your browser</a> to improve your experience.",
     "menu": {
       "home": "Home",
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "competition": "Competition",
+        "tagCollection": "Tag Collection",
+        "tag": "Tag",
+        "tagCollectionTag": "Tag Collection Tag",
+        "problem": "Problem",
+        "competitionProblem": "Competition Problem",
+        "submission": "Submission",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

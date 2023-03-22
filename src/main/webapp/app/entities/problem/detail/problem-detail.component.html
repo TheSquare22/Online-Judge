@@ -1,0 +1,46 @@
+<div class="d-flex justify-content-center">
+  <div class="col-8">
+    <div *ngIf="problem">
+      <h2 data-cy="problemDetailsHeading"><span jhiTranslate="arenaApp.problem.detail.title">Problem</span></h2>
+
+      <hr />
+
+      <jhi-alert-error></jhi-alert-error>
+
+      <jhi-alert></jhi-alert>
+
+      <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="global.field.id">ID</span></dt>
+        <dd>
+          <span>{{ problem.id }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.problem.title">Title</span></dt>
+        <dd>
+          <span>{{ problem.title }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.problem.directory">Directory</span></dt>
+        <dd>
+          <span>{{ problem.directory }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.problem.version">Version</span></dt>
+        <dd>
+          <span>{{ problem.version }}</span>
+        </dd>
+        <dt><span jhiTranslate="arenaApp.problem.tags">Tags</span></dt>
+        <dd>
+          <div *ngIf="problem.tags">
+            <a [routerLink]="['/tag-collection', problem.tags.id, 'view']">{{ problem.tags.id }}</a>
+          </div>
+        </dd>
+      </dl>
+
+      <button type="submit" (click)="previousState()" class="btn btn-info" data-cy="entityDetailsBackButton">
+        <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back">Back</span>
+      </button>
+
+      <button type="button" [routerLink]="['/problem', problem.id, 'edit']" class="btn btn-primary">
+        <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit">Edit</span>
+      </button>
+    </div>
+  </div>
+</div>

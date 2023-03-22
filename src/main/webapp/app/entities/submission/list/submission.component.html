@@ -1,0 +1,188 @@
+<div>
+  <h2 id="page-heading" data-cy="SubmissionHeading">
+    <span jhiTranslate="arenaApp.submission.home.title">Submissions</span>
+
+    <div class="d-flex justify-content-end">
+      <button class="btn btn-info me-2" (click)="load()" [disabled]="isLoading">
+        <fa-icon icon="sync" [spin]="isLoading"></fa-icon>
+        <span jhiTranslate="arenaApp.submission.home.refreshListLabel">Refresh list</span>
+      </button>
+
+      <button
+        id="jh-create-entity"
+        data-cy="entityCreateButton"
+        class="btn btn-primary jh-create-entity create-submission"
+        [routerLink]="['/submission/new']"
+      >
+        <fa-icon icon="plus"></fa-icon>
+        <span jhiTranslate="arenaApp.submission.home.createLabel"> Create a new Submission </span>
+      </button>
+    </div>
+  </h2>
+
+  <jhi-alert-error></jhi-alert-error>
+
+  <jhi-alert></jhi-alert>
+
+  <div class="alert alert-warning" id="no-result" *ngIf="submissions?.length === 0">
+    <span jhiTranslate="arenaApp.submission.home.notFound">No Submissions found</span>
+  </div>
+
+  <div class="table-responsive table-entities" id="entities" *ngIf="submissions && submissions.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr jhiSort [(predicate)]="predicate" [(ascending)]="ascending" (sortChange)="navigateToWithComponentValues()">
+          <th scope="col" jhiSortBy="id">
+            <div class="d-flex">
+              <span jhiTranslate="global.field.id">ID</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="file">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.file">File</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="verdict">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.verdict">Verdict</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="details">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.details">Details</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="points">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.points">Points</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="timeInMillis">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.timeInMillis">Time In Millis</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="memoryInBytes">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.memoryInBytes">Memory In Bytes</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="uploadDate">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.uploadDate">Upload Date</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="securityKey">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.securityKey">Security Key</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="tags.id">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.tags">Tags</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="user.id">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.user">User</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col" jhiSortBy="competitionProblem.id">
+            <div class="d-flex">
+              <span jhiTranslate="arenaApp.submission.competitionProblem">Competition Problem</span>
+              <fa-icon class="p-1" icon="sort"></fa-icon>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let submission of submissions; trackBy: trackId" data-cy="entityTable">
+          <td>
+            <a [routerLink]="['/submission', submission.id, 'view']">{{ submission.id }}</a>
+          </td>
+          <td>{{ submission.file }}</td>
+          <td>{{ submission.verdict }}</td>
+          <td>{{ submission.details }}</td>
+          <td>{{ submission.points }}</td>
+          <td>{{ submission.timeInMillis }}</td>
+          <td>{{ submission.memoryInBytes }}</td>
+          <td>{{ submission.uploadDate | formatMediumDatetime }}</td>
+          <td>{{ submission.securityKey }}</td>
+          <td>
+            <div *ngIf="submission.tags">
+              <a [routerLink]="['/tag-collection', submission.tags.id, 'view']">{{ submission.tags.id }}</a>
+            </div>
+          </td>
+          <td>
+            {{ submission.user?.id }}
+          </td>
+          <td>
+            <div *ngIf="submission.competitionProblem">
+              <a [routerLink]="['/competition-problem', submission.competitionProblem.id, 'view']">{{
+                submission.competitionProblem.id
+              }}</a>
+            </div>
+          </td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button
+                type="submit"
+                [routerLink]="['/submission', submission.id, 'view']"
+                class="btn btn-info btn-sm"
+                data-cy="entityDetailsButton"
+              >
+                <fa-icon icon="eye"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+              </button>
+
+              <button
+                type="submit"
+                [routerLink]="['/submission', submission.id, 'edit']"
+                class="btn btn-primary btn-sm"
+                data-cy="entityEditButton"
+              >
+                <fa-icon icon="pencil-alt"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+              </button>
+
+              <button type="submit" (click)="delete(submission)" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <fa-icon icon="times"></fa-icon>
+                <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div *ngIf="submissions && submissions.length > 0">
+    <div class="d-flex justify-content-center">
+      <jhi-item-count [params]="{ page: page, totalItems: totalItems, itemsPerPage: itemsPerPage }"></jhi-item-count>
+    </div>
+
+    <div class="d-flex justify-content-center">
+      <ngb-pagination
+        [collectionSize]="totalItems"
+        [page]="page"
+        [pageSize]="itemsPerPage"
+        [maxSize]="5"
+        [rotate]="true"
+        [boundaryLinks]="true"
+        (pageChange)="navigateToPage($event)"
+      ></ngb-pagination>
+    </div>
+  </div>
+</div>

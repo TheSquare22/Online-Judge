@@ -1,0 +1,28 @@
+{
+  "applications": ["arena"],
+  "changelogDate": "20230322202540",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tag",
+  "fields": [
+    {
+      "fieldName": "title",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "keywords",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "visible",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "Tag",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
