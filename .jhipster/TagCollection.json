@@ -1,0 +1,15 @@
+{
+  "applications": ["arena"],
+  "changelogDate": "20230322203232",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "tag_collection",
+  "fields": [],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": false,
+  "name": "TagCollection",
+  "pagination": "no",
+  "readOnly": false,
+  "relationships": [],
+  "service": "serviceImpl"
+}
